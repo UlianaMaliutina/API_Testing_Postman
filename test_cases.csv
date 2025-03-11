@@ -1,0 +1,1172 @@
+No,Test Cases,Test Steps,Test Data (Request Body),Expected Result,Actual Result,Status,Link to Bug Report
+1,Verify the user can add an existing product ID to the kit,"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds existing products to the kit on the response.
+
+4. The user gets Status: 200 OK on the response.","Path params: id=6
+
+{
+  ""productsList"": [
+    {
+      ""id"": 6,
+      ""quantity"": 1
+    }
+  ]
+}","- Added existing products to the kit
+
+- Status: 200 OK","- Added existing products to the kit
+
+- Status: 200 OK",Passed,
+2,Verify the user can add the existing product IDs to the kit within the limit(29 positions),"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds existing products to the kit on the response.
+
+4. The user gets Status: 200 OK on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+     {
+            ""id"": 63,
+            ""quantity"": 29
+    }
+  ]
+}","- Added existing products to the kit
+
+- Status: 200 OK","- Added existing products to the kit
+
+- Status: 200 OK",Passed,
+3,Verify the user can add the existing product IDs to the kit within the limit(30 positions),"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds existing products to the kit on the response.
+
+4. The user gets Status: 200 OK on the response.","Path params: id=4
+
+{
+  ""productsList"": [
+     {
+            ""id"": 10,
+            ""quantity"": 30
+    }
+  ]
+}","- Added existing products to the kit
+
+- Status: 200 OK","- Added existing products to the kit
+
+- Status: 200 OK",Passed,
+4,Verify the user can add the existing product IDs to the kit if the limit is exceeded(31 positions),"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds existing products to the kit on the response.
+
+4. The user gets Status: 400 Bad Response on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+     {
+            ""id"": 61,
+            ""quantity"": 31
+    }
+  ]
+}","- Existing product isn't added to the kit
+
+- Status: 400 Bad Request","- Added existing products to the kit
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-16?atlOrigin=eyJpIjoiOTVhMzEwNzQ0OThhNGY5NGI0YmM3MjdmOWM1NzBiMGUiLCJwIjoiaiJ9
+5,Verify that adding non-existent product IDs to the kit returns error(404 Not Found),"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds non-existent products to the kit on the response.
+
+4. The user gets Status: 400 Bad Request on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+     {
+            ""id"": 993,
+            ""quantity"": 1
+    }
+  ]
+}","- Non-existent product isn't added to the kit
+
+- Status: 404 Not Found","- Non-existent product is added to the kit
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-1?atlOrigin=eyJpIjoiZDcxYjE5YzAyMDUyNGZiY2IwNGQwYzZhZTc1YWZiY2MiLCJwIjoiaiJ9
+6,Verify that adding products to a non-existing kit ID returns error(404 Not Found),"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds existing products to the non-existent kit on the response.
+
+4. The user gets Status: 404 Not Found on the response.","Path params: id=8
+
+{
+  ""productsList"": [
+     {
+            ""id"": 63,
+            ""quantity"": 3
+    }
+  ]
+}","- Existing product isn't added to the non-existent kit
+
+- Status: 404 Not Found","- Existing product isn't added to the non-existent kit
+
+- Status: 404 Not Found",Passed,
+7,Verify that missing product IDs returns error(400 Bad Request),"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user doesn't add product ID to the kit on the request body.
+
+4. The user gets Status: 400 Bad Request on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+     {
+            ""quantity"": 3
+    }
+  ]
+}","- Product isn't added to the kit
+
+- Status: 400 Bad Request","- Product without ID is added to the kit
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-2?atlOrigin=eyJpIjoiZjYwN2VjNTNmYmZjNDk5NDliZTk0OTQzN2RlODQwNjciLCJwIjoiaiJ9
+8,Verify that adding non-existent product IDs to the non-existing kit returns error(404 Not Found),"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using a non-existent product ID in the path params and request body.
+
+3. The user adds non-existent products to the non-existent kit on the response.
+
+4. The user gets Status: 404 Not Found on the response.","Path params: id=8
+
+{
+  ""productsList"": [
+     {
+            ""id"": 603,
+            ""quantity"": 3
+    }
+  ]
+}","- Non-existent product isn't added to the non-existent kit
+
+- Status: 404 Not Found","- Non-existent product isn't added to the non-existent kit
+
+- Status: 404 Not Found",Passed,
+9,Verify that missing product quantities returns error(400 Bad Request),"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds existing products to the existing kit on the response without quantities.
+
+4. The user gets Status: 400 Bad Request on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+     {
+            ""id"": 13
+    }
+  ]
+}","- Existing product isn't added to the kit
+
+- Status: 400 Bad Request","- Existing product isn't added to the kit
+
+- Status: 500 Internal Server Error
+
+""message"": ""invalid input syntax for integer: \""NaN\""",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-3?atlOrigin=eyJpIjoiMzgyOThkYTE5MDMzNGQ4NmI3YjJhNWYwYWY1YjExZGYiLCJwIjoiaiJ9
+10,Verify that user can add several products to the kit in one request,"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using a non-existent product ID in the path params and request body.
+
+3. The user adds several products to the kit on the response.
+
+4. The user gets Status: 200 OK on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+     {
+            ""id"": 61,
+            ""quantity"": 1
+    },
+    {
+            ""id"": 63,
+            ""quantity"": 3
+    },
+    {
+            ""id"": 60,
+            ""quantity"": 1
+    }
+  ]
+}","- Products are added to the kit
+
+- Status: 200 OK","- Products are added to the kit
+
+- Status: 200 OK",Passed,
+11,Verify that correct product ID and exceeding limits quantity returns results which show that product is in stock but in different amount ,"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds existing products to the existing kit on the response using exceeding limits quantities.
+
+4. The user gets Status: 200 OK on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+    {
+      ""id"": 63,
+      ""quantity"": 1697383564
+    }
+  ]
+}","- Existing product isn't added to the kit
+
+- Status: 400 Bad Request","- Added existing products to the kit in requested quantity
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-4?atlOrigin=eyJpIjoiODE3ZTA4YjUzNmEzNDgzMjlhMjVkYmNkMWI0N2RiZGQiLCJwIjoiaiJ9
+12,Verify that missing productList in request body returns error,"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user leaves productsList string empty
+
+3. The user gets Status: 400 Bad Request on the response.","Path params: id=4
+
+{
+  ""productsList"": """"
+}",- Status: 400 Bad Request,"- Returned the list of the products in requested kit
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-5?atlOrigin=eyJpIjoiYWE3YmEzZDQ1YTQ1NDNjZjg3MmZkZWUxNWVlYmE1ZjIiLCJwIjoiaiJ9
+13,Verify that user cannot leave body request empty,"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user doesn't send body request.
+
+3. The user gets Status: 400 Bad Request on the response.","Path params: id=4
+
+Leave the request body empty",- Status: 400 Bad Request,"- Returned the list of the products in requested kit
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-17?atlOrigin=eyJpIjoiMGRlYTIxNjk2MGM2NDJjMWFmNDY1ZDM2ODg5NzJiODYiLCJwIjoiaiJ9
+14,Verify that user cannot leave kit_id in path params empty,"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user doesn't put kit_id in path params and sends request body
+
+3. The user gets Status: 404 Not Found on the response.","Path params leave empty
+
+{
+  ""productsList"": [
+    {
+      ""id"": 6,
+      ""quantity"": 1
+    }
+  ]
+}",- Status: 404 Not Found,"- Status: 500 Internal Server Error
+
+message in body: <pre>Internal Server Error</pre>",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-18?atlOrigin=eyJpIjoiNjczN2ZkZjcyNTc5NGU2NTllOTJkNzA3OWZjNjY5OWEiLCJwIjoiaiJ9
+15,Verify that putting Latin characters in product ID returns error,"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds Latin characters in product ID in body request
+
+4. The user gets Status: 400 Bad Request on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+    {
+      ""id"": ""six"",
+      ""quantity"": 1
+    }
+  ]
+}","- Non-existent product isn't added to the kit
+
+- Status: 400 Bad Request","- Status: 500 Internal Server Error
+
+message in body: <pre>Internal Server Error</pre>",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-6?atlOrigin=eyJpIjoiM2FkODg1Y2E3ZmYyNGIyZWIxOGEyYmM3ODUwYmJmNTYiLCJwIjoiaiJ9
+16,Verify that putting Latin characters in product quantity returns error,"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds Latin characters in product quantity in body request
+
+4. The user gets Status: 400 Bad Request on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+    {
+      ""id"": 63,
+      ""quantity"": ""one""
+    }
+  ]
+}
+
+","- Product isn't added to the kit
+
+- Status: 400 Bad Request","- Status: 500 Internal Server Error
+
+""message"": ""invalid input syntax for integer: \""21one11111111111111113\""""",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-7?atlOrigin=eyJpIjoiYTg4NDUwMzM3NjkwNDgyNjgxNmFiMzBiZmQwYTUxYmIiLCJwIjoiaiJ9
+17,Verify that putting non-Latin characters in product ID returns error,"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds non-Latin characters in product ID in body request
+
+4. The user gets Status: 404 Not Found on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+    {
+      ""id"": ""שש"",
+      ""quantity"": 1
+    }
+  ]
+}","- Non-existent product isn't added to the kit
+
+- Status: 400 Bad Request","- Status: 500 Internal Server Error
+
+message in body: <pre>Internal Server Error</pre>",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-8?atlOrigin=eyJpIjoiMjU2NWU3OGU4Y2M1NDE3NDk0MjY3N2Q4OTU3YWU4NjAiLCJwIjoiaiJ9
+18,Verify that putting non-Latin characters in product quantity returns error,"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds non-Latin characters in product quantity in body request
+
+4. The user gets Status: 404 Not Found on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+    {
+      ""id"": 6,
+      ""quantity"": ""חמש""
+    }
+  ]
+}","- Product isn't added to the kit
+
+- Status: 400 Bad Request","- Status: 500 Internal Server Error
+
+""message"": ""invalid input syntax for integer: \""23חמש\""""",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-9?atlOrigin=eyJpIjoiMDI1ZWRkOGE2OTIxNDQxYzlkZDgwZGI4YzJmYmYwZGYiLCJwIjoiaiJ9
+19,Verify that putting special characters in product ID returns error,"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds special characters in product ID in body request
+
+4. The user gets Status: 400 Bad Request on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+    {
+      ""id"": ""&"",
+      ""quantity"": 1
+    }
+  ]
+}","- Non-existent product isn't added to the kit
+
+- Status: 400 Bad Request","Response and status code “500 Internal Server Error” and body response ""message"": <pre>Internal Server Error</pre>",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-10?atlOrigin=eyJpIjoiMGY0MzJlYzQ5Y2ZiNGNhZjg1ZTg2YmM2MzkyYTg2ZTUiLCJwIjoiaiJ9
+20,Verify that putting special characters in product quantity returns error,"1. The user selects POST request with URL + /api/v1/kits/:id/products 
+
+2. The user sends a request by using an existing product ID in the path params and request body.
+
+3. The user adds special characters in product quantity in body request
+
+4. The user gets Status: 404 Not Found on the response.","Path params: id=3
+
+{
+  ""productsList"": [
+    {
+      ""id"": 6,
+      ""quantity"": ""@""
+    }
+  ]
+}","- Product isn't added to the kit
+
+- Status: 400 Bad Request","- Status: 500 Internal Server Error
+
+""message"": ""invalid input syntax for integer: \""25@\""""",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-11?atlOrigin=eyJpIjoiNmFkNGIxM2U4YTc3NDc5Y2IwN2Y3N2ExMGZmMjNlNWYiLCJwIjoiaiJ9
+,,,,,,,
+1,Verify that user cannot order Fast Delivery at 6,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. Add to request body expected time of the delivery(6am)
+
+4. The user gets Status: 400 Bad Request","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>6</deliveryTime>
+</InputModel>","- The order isn't created
+
+- isItPossibleToDeliver=""false"" in the response body
+
+- User receives status 400 Bad Request","- Body in response: <response name=""Fast Delivery""/>
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-12?atlOrigin=eyJpIjoiM2NkMWI1YjAxNmQ2NGJmMTgyNTM5MjdhOWZkMTVkNDgiLCJwIjoiaiJ9
+2,Verify that user can order Fast Delivery at 7,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. Add to request expected time of the delivery(7am)
+
+4. The user gets Status: 200 OK","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>7</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Passed,
+3,Verify that user can order Fast Delivery at 7.30,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. Add to request expected time of the delivery(7.30am)
+
+4. The user gets Status: 200 OK","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>7.30</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Passed,
+4,Verify that user can order Fast Delivery at 20,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. Add to request expected time of the delivery(20)
+
+4. The user gets Status: 200 OK","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Passed,
+5,Verify that user can order Fast delivery at 21,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. Add to request expected time of the delivery(21)
+
+4. The user gets Status: 200 OK","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>21</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Passed,
+6,Verify that user cannot order Fast Delivivery at 22,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. Add to request expected time of the delivery(22)
+
+4. The user gets Status: 400 Bad Request","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>22</deliveryTime>
+</InputModel>","- The order isn't created
+
+- isItPossibleToDeliver=""false"" in the response body
+
+- User receives status 400 Bad Request","- Body in response: <response name=""Fast Delivery""/>
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-15?atlOrigin=eyJpIjoiOTAwNGIxMzU0MzUxNDA1NDhiZDI1MGQ0M2U1ZGYwNjciLCJwIjoiaiJ9
+7,Verify that user cannot order Fast Delivivery at 23,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. Add to request expected time of the delivery(23)
+
+4. The user gets Status: 400 Bad Request","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>23</deliveryTime>
+</InputModel>","- The order isn't created
+
+- isItPossibleToDeliver=""false"" in the response body
+
+- User receives status 400 Bad Request","- Body in response: <response name=""Fast Delivery""/>
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-19?atlOrigin=eyJpIjoiMWFiOWM2Njk3YWJlNDZlMTkzNzBjZjg5NzBkNTI4NDkiLCJwIjoiaiJ9
+8,Verify that user cannot order Fast Delivivery at 24,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. Add to request expected time of the delivery(24)
+
+4. The user gets Status: 400 Bad Request","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>24</deliveryTime>
+</InputModel>","- The order isn't created
+
+- isItPossibleToDeliver=""false"" in the response body
+
+- User receives status 400 Bad Request","- Body in response: <response name=""Fast Delivery""/>
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-20?atlOrigin=eyJpIjoiZDMwYmU3MjA4ZDgyNGEzNzk0N2U0YzQyYzllNWM0NzYiLCJwIjoiaiJ9
+9,Verify that user cannot order Fast Delivivery at 0,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. Add to request expected time of the delivery(0)
+
+4. The user gets Status: 400 Bad Request","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>0</deliveryTime>
+</InputModel>","- The order isn't created
+
+- isItPossibleToDeliver=""false"" in the response body
+
+- User receives status 400 Bad Request","- Body in response: <response name=""Fast Delivery""/>
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-21?atlOrigin=eyJpIjoiYjM4MGExYjg4N2E5NDlkODgzZjczOTViZTg0MTEwZTYiLCJwIjoiaiJ9
+10,Verify that user cannot order Fast Delivivery at 1,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. Add to request expected time of the delivery(1)
+
+4. The user gets Status: 400 Bad Request","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>1</deliveryTime>
+</InputModel>","- The order isn't created
+
+- isItPossibleToDeliver=""false"" in the response body
+
+- User receives status 400 Bad Request","- Body in response: <response name=""Fast Delivery""/>
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-22?atlOrigin=eyJpIjoiZTBmNGYzN2YyNWY3NDAyYzkyOWUxMzdiYjI3ZDRiMWQiLCJwIjoiaiJ9
+11,Verify that user can order 1 product ,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count(1), expected delivery time and weight in params
+
+3. The user gets Status: 200 OK","<InputModel>
+<productsCount>1</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+",Passed,
+12,Verify that user can order 2 products,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count(2), expected delivery time and weight in params
+
+3. The user gets Status: 200 OK","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>1.115</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""3"" clientDeliveryCost=""0"">","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""3"" clientDeliveryCost=""0"">
+",Passed,
+13,Verify that user can order 6 products ,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count(6), expected delivery time and weight in params
+
+3. The user gets Status: 200 OK","<InputModel>
+<productsCount>6</productsCount>
+<productsWeight>2.115</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""3"" clientDeliveryCost=""0"">
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""3"" clientDeliveryCost=""0"">
+",Passed,
+10,Verify that user can order 7 products ,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count(7), expected delivery time and weight in params
+
+3. The user gets Status: 200 OK","<InputModel>
+<productsCount>7</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+",Passed,
+11,Verify that user can order 8 products ,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count(8), expected delivery time and weight in params
+
+3. The user gets Status: 200 OK","<InputModel>
+<productsCount>8</productsCount>
+<productsWeight>1.115</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+",Passed,
+12,Verify that user can order 9 products ,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count(9), expected delivery time and weight in params
+
+3. The user gets Status: 200 OK","<InputModel>
+<productsCount>9</productsCount>
+<productsWeight>5.5</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+",Passed,
+13,Verify that user can order 13 products ,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count(13), expected delivery time and weight in params
+
+3. The user gets Status: 200 OK","<InputModel>
+<productsCount>13</productsCount>
+<productsWeight>5.15</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+",Passed,
+14,Verify that user can order 14 products ,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count(14), expected delivery time and weight in params
+
+3. The user gets Status: 200 OK","<InputModel>
+<productsCount>14</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+",Passed,
+15,Verify that user can order 15 products,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count(15), expected delivery time and weight in params
+
+3. The user gets Status: 200 OK and hostDeliveryCost=""7"" ","<InputModel>
+<productsCount>15</productsCount>
+<productsWeight>1.115</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order isn't created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OR; hostDeliveryCost=""7""","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""6"">
+",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-13?atlOrigin=eyJpIjoiOTQ1Njg1NmJmYjQ5NDc5ZmFhYjJhOGU1OTY1ZDkzMWYiLCJwIjoiaiJ9
+16,Verify that user cannot leave product count field empty(0),"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count(0), expected delivery time and weight in params
+
+3. The user gets Status: 400 Bad Request","<InputModel>
+<productsCount>0</productsCount>
+<productsWeight>1.115</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order isn't created
+
+- isItPossibleToDeliver=""false"" in the response body
+
+- User receives status 400 Bad Request","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""3"" clientDeliveryCost=""0"">
+",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-14?atlOrigin=eyJpIjoiNmFmM2JhNzRkYTZlNGZhM2EwNzZjMGE5YTFmODkwNzAiLCJwIjoiaiJ9
+17,Verify that user can leave productWeight field empty(0,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight(0) in params
+
+3. The user gets Status: 200 OK","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>0</productsWeight><deliveryTime>20</deliveryTime>
+</InputModel>
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""3"" clientDeliveryCost=""0"">","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""3"" clientDeliveryCost=""0"">",Passed,
+18,Verify that user can order products with weight 0.05 kg,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. The request adds weight of the products(0.05kg)
+
+4. The user gets Status: 200 OK ","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>0.05</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""3"" clientDeliveryCost=""0"">
+",Passed,
+19,Verify that user can order products with weight 2.4kg,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. The request adds weight of the products(2.4kg)
+
+4. The user gets Status: 200 OK","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>2.4</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""3"" clientDeliveryCost=""0"">
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""3"" clientDeliveryCost=""0"">
+",Passed,
+20,Verify that user can order products with weight 2.5kg,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. The request adds weight of the products(2.5kg)
+
+4. The user gets Status: 200 OK ","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>2.5</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""3"" clientDeliveryCost=""0"">","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""3"" clientDeliveryCost=""0"">
+",Passed,
+21,Verify that user can order products with weight 2.6kg,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. The request adds weight of the products(2.6kg)
+
+4. The user gets Status: 200 OK with body response <hostDeliveryCost=""6"" clientDeliveryCost=""0"">","<InputModel>
+<productsCount>4</productsCount>
+<productsWeight>2.6</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+",Passed,
+22,Verify that user can order products with weight 2.7 kg,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. The request adds weight of the products(2.7kg)
+
+4. The user gets Status: 200 OK with body response <hostDeliveryCost=""6"" clientDeliveryCost=""0"">","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>2.7</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+",Passed,
+23,Verify that user can order products with weight 5.9kg,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. The request adds weight of the products(5.9kg)
+
+4. The user gets Status: 200 OK with body response <hostDeliveryCost=""6"" clientDeliveryCost=""0"">","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>5.9</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+",Passed,
+24,Verify that user can order products with weight 6kg,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. The request adds weight of the products(6kg)
+
+4. The user gets Status: 200 OK with body response <hostDeliveryCost=""6"" clientDeliveryCost=""0"">","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>6.0</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""6"" clientDeliveryCost=""0"">
+",Passed,
+25,Verify that user can order products with weight 6.1 kg ,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. The request adds weight of the products(6.1kg)
+
+4. The user gets Status: 200 OK with body response <hostDeliveryCost=""7""","<InputModel>
+<productsCount>6</productsCount>
+<productsWeight>6.1</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK; hostDeliveryCost=""7""
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body; hostDeliveryCost=""6"" clientDeliveryCost=""6"">
+
+- User receives status 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-23?atlOrigin=eyJpIjoiMzA5ZTM3MDgwMmM1NDVlN2E2Y2I5ODQ5MGM4ZGZkOTYiLCJwIjoiaiJ9
+26,Verify that missing parameter productsCount will return error,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time and weight in params
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsWeight>5.1</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- Status: 500 Internal Server Error
+
+""message"": ""Cannot read properties of undefined (reading '0')""",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-24?atlOrigin=eyJpIjoiMjhlOWQ0MDdhYWUwNGVmZDg1YjA5MGMxYTM2NjlmYmEiLCJwIjoiaiJ9
+27,Verify that missing parameter productsWeight will return error,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time and productsCount in params
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>6</productsCount>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- Status: 500 Internal Server Error
+
+""message"": ""Cannot read properties of undefined (reading '0')""",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-25?atlOrigin=eyJpIjoiYWI4ZDZmZjI4Zjg1NDdjZTlkZDhlMGVlZmM1NWVjNjUiLCJwIjoiaiJ9
+28,Verify that missing parameter deliveryTime will return error,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using productWeight and productsCount in params
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>6</productsCount>
+<productsWeight>5.70</productsWeight>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- Status: 500 Internal Server Error
+
+""message"": ""Cannot read properties of undefined (reading '0')""",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-26?atlOrigin=eyJpIjoiZmJlMTc4MmUyNDgwNDhjNWJkNjE0Y2I1MTYyYmIwYWMiLCJwIjoiaiJ9
+29,Verify that user cannot put Latin characters in field productsCount,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time and weight in params; Latin characters in productsCount field
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>ab</productsCount>
+<productsWeight>6.1</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-27?atlOrigin=eyJpIjoiMDEyOWMzOTc1M2I1NGMzMWJhZDhmYTRmOTA2MzBiMWEiLCJwIjoiaiJ9
+30,Verify that user cannot put Latin characters in field productsWeight,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time, productsCount and weight(Latin characters) in params
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>6</productsCount>
+<productsWeight>klo</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-28?atlOrigin=eyJpIjoiODVhZDM2NTkyNGQ2NDJkZmI2NDVjOTIwYTBmMWRhNjAiLCJwIjoiaiJ9
+31,Verify that user cannot put Latin characters in field deliveryTime,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time(Latin characters), productsCount and weight in params
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>6</productsCount>
+<productsWeight>6.1</productsWeight>
+<deliveryTime>zed</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-29?atlOrigin=eyJpIjoiMDk2NTM2ZDk1ODFiNGQzZGFjYzkyMTNjNzEyODE2MDEiLCJwIjoiaiJ9
+32,Verify that user cannot put non-Latin characters in field productsCount,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time and weight in params; non-Latin characters in productsCount field
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>שש</productsCount>
+<productsWeight>6.1</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-30?atlOrigin=eyJpIjoiNWQxYmE0MDM0ZTIwNDYyZDlmNzkzMDk3ZDdhM2Q0NjkiLCJwIjoiaiJ9
+33,Verify that user cannot put non-Latin characters in field productsWeight,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time, productsCount and weight(non-Latin characters) in params
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>6</productsCount>
+<productsWeight>שש</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-31?atlOrigin=eyJpIjoiNTdlOTQyOTYyODQ3NDgwYTgyM2E1NzM1M2NlNzU2MmYiLCJwIjoiaiJ9
+34,Verify that user cannot put non-Latin characters in field deliveryTime,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time(non-Latin characters), productsCount and weight in params
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>6</productsCount>
+<productsWeight>6.1</productsWeight>
+<deliveryTime>שש</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-32?atlOrigin=eyJpIjoiZjg4YWUwYWY3OTBiNDAzMGE3ZDRlMWU0MjNiNzJiYzYiLCJwIjoiaiJ9
+35,Verify that user cannot put special characters in field productsCount,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time and weight in params; special characters in productsCount field
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>&</productsCount>
+<productsWeight>6.1</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 500 Internal Server Error",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-33?atlOrigin=eyJpIjoiZTU5MzVkMmI2YWE2NGJiN2JlOTdkNDExNGNjNGQ5OTMiLCJwIjoiaiJ9
+36,Verify that user cannot put special characters in field productsWeight,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time, productsCount and weight(special characters) in params
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>6</productsCount>
+<productsWeight>&!</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 500 Internal Server Error",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-34?atlOrigin=eyJpIjoiZjNlYzVkZmZlNTc5NDczNTk4NDgxMTNkMzA0Y2JlOWQiLCJwIjoiaiJ9
+37,Verify that user cannot put special characters in field deliveryTime,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time(special characters), productsCount and weight in params
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>6</productsCount>
+<productsWeight>6.1</productsWeight>
+<deliveryTime>!&</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 500 Internal Server Error",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-35?atlOrigin=eyJpIjoiNzQ1NTkxOTY1ZWYzNDlmZGFlMjJhNzgwNzQwZDBlOGYiLCJwIjoiaiJ9
+38,Verify that user cannot put negative number in field productsCount,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time and weight in params; negative numbers in productsCount field
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>-4</productsCount>
+<productsWeight>6.1</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-36?atlOrigin=eyJpIjoiOTFiMjU5ZTZiMmZiNGM4ZTg2MDEyN2Q4OTU2YTFmYjYiLCJwIjoiaiJ9
+39,Verify that user cannot put negative number in field productsWeight,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time, productsCount and weight(negative number) in params
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>6</productsCount>
+<productsWeight>-8</productsWeight>
+<deliveryTime>20</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-37?atlOrigin=eyJpIjoiZTc2MDU4Y2Y1MDY2NGU1ZTkwN2MzZmYyODllNmNjZDUiLCJwIjoiaiJ9
+40,Verify that user cannot put negative number in field deliveryTime,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using expected delivery time(negative number), productsCount and weight in params
+
+3. The user gets status 400 Bad Request","<InputModel>
+<productsCount>6</productsCount>
+<productsWeight>6.1</productsWeight>
+<deliveryTime>-6</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request
+","- Body in response: <response name=""Fast Delivery""/>
+
+- Status: 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-38?atlOrigin=eyJpIjoiMWFlYTNiY2Q5ZGEyNDE4MTg4MzlmM2FhMTcwOWYyYmUiLCJwIjoiaiJ9
+41,Verify that user cannot put deliveryTime in format 0.000,"1. The user selects POST request with URL + /fast-delivery/v3.1.1/calculate-delivery.xml
+
+2. The user sends a request by using product count, expected delivery time and weight in params
+
+3. Add to request expected time of the delivery(7.115)
+
+4. The user gets Status: 400 Bad Request","<InputModel>
+<productsCount>2</productsCount>
+<productsWeight>5.115</productsWeight>
+<deliveryTime>7.115</deliveryTime>
+</InputModel>","- The order isn't created
+
+- User receives status 400 Bad Request","- The order is created
+
+- isItPossibleToDeliver=""true"" in the response body
+
+- User receives status 200 OK",Failed,https://ulyanamalyutina60195.atlassian.net/browse/S4PUM-39?atlOrigin=eyJpIjoiYTIxY2MxZjM0NmZhNDZjYzk5N2MzZDNlMDNkZmY4ZjYiLCJwIjoiaiJ9
