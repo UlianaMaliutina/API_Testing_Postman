@@ -13,6 +13,7 @@ Test Reporting: Documented test results to summarize findings and coverage.
 # Test Coverage Summary
 
 Requirement 1: Working with Kits
+
 Ensured users can add existing products to a kit via POST /api/v1/kits/:id/products.
 Validated product limit constraints (max 30 items per kit).
 Checked error handling:
